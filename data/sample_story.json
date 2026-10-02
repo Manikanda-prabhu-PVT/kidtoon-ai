@@ -1,0 +1,40 @@
+{
+  "title": "The Lost Little Bird",
+  "characters": [
+    {
+      "name": "Ruby",
+      "type": "rabbit",
+      "description": "A cute white rabbit with long ears and a blue scarf"
+    },
+    {
+      "name": "Ellie",
+      "type": "elephant",
+      "description": "A cheerful baby elephant with big round ears"
+    },
+    {
+      "name": "Pip",
+      "type": "bird",
+      "description": "A tiny yellow bird who is lost"
+    }
+  ],
+  "scenes": [
+    {
+      "scene_number": 1,
+      "description": "A sunny forest. Ruby and Ellie find Pip crying on a branch.",
+      "narration": "One sunny morning, Ruby and Ellie heard a tiny cry in the forest.",
+      "characters": ["Ruby", "Ellie", "Pip"]
+    },
+    {
+      "scene_number": 2,
+      "description": "Ruby, Ellie and Pip walk across a flowery meadow.",
+      "narration": "Do not worry, Pip! We will help you find your mother, said Ruby.",
+      "characters": ["Ruby", "Ellie", "Pip"]
+    },
+    {
+      "scene_number": 3,
+      "description": "A big tree with a nest. Pip's mother hugs Pip.",
+      "narration": "At the tallest tree, Pip found his mother. Everyone cheered happily!",
+      "characters": ["Pip", "Ruby", "Ellie"]
+    }
+  ]
+}
