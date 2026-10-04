@@ -1,18 +1,26 @@
 from pathlib import Path
 
 from fastapi import FastAPI, HTTPException
+from fastapi.responses import FileResponse
 from pydantic import BaseModel
 
 from app.main import clean_prompt
 from app.story import load_story, validate_story
 
-SAMPLE_STORY_PATH = Path(__file__).resolve().parent.parent / "data" / "sample_story.json"
+BASE_DIR = Path(__file__).resolve().parent
+SAMPLE_STORY_PATH = BASE_DIR.parent / "data" / "sample_story.json"
+INDEX_PAGE = BASE_DIR / "static" / "index.html"
 
 app = FastAPI(title="KidToon AI")
 
 
 class StoryRequest(BaseModel):
     prompt: str
+
+
+@app.get("/")
+def home() -> FileResponse:
+    return FileResponse(INDEX_PAGE)
 
 
 @app.get("/health")

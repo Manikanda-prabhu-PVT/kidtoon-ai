@@ -32,3 +32,8 @@ def test_generate_rejects_blank_prompt():
 def test_generate_rejects_missing_prompt():
     response = client.post("/story/generate", json={})
     assert response.status_code == 422
+
+def test_home_page_is_served():
+    response = client.get("/")
+    assert response.status_code == 200
+    assert "KidToon" in response.text
