@@ -4,6 +4,7 @@ from fastapi import FastAPI, HTTPException
 from fastapi.responses import FileResponse
 from pydantic import BaseModel
 
+from app.llm import LLMError, generate_story
 from app.main import clean_prompt
 from app.story import load_story, validate_story
 
@@ -36,12 +37,16 @@ def get_sample_story() -> dict:
 
 
 @app.post("/story/generate")
-def generate_story(request: StoryRequest) -> dict:
+def generate(request: StoryRequest) -> dict:
     try:
         idea = clean_prompt(request.prompt)
     except ValueError as error:
         raise HTTPException(status_code=400, detail=str(error))
 
-    story = load_story(SAMPLE_STORY_PATH)  # placeholder until Step 4
+    try:
+        story = generate_story(idea)
+    except LLMError as error:
+        raise HTTPException(status_code=502, detail=str(error))
+
     story["prompt"] = idea
     return story
